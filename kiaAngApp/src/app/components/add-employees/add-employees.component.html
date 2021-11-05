@@ -1,0 +1,90 @@
+
+
+<h1> Add Employee</h1>
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="fullName">Name</label>
+            </div>
+            <div class="col-md-3">
+                <input formControlName="fullName" id="fullName" type="text" class="form-control">
+                <div *ngIf="f.fullName.touched && f.fullName.invalid" class="alert alert-danger">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="dob">DOB</label>
+            </div>
+            <div class="col-md-3">
+
+                <input formControlName="dob" id="dob" type="text" class="form-control" type="text" bsDatepicker>
+                <div *ngIf="f.dob.touched && f.dob.invalid" class="alert alert-danger" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="dob">Gender</label>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+
+                    <label class="radio-inline">
+                        <input type="radio" value="male" name="gender" formControlName="gender" checked> Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value="female" name="gender" formControlName="gender"> Female
+                    </label>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="dob">Salary</label>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" id="salary" formControlName="salary" name="salary" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="dob">Designation</label>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" id="designation" required formControlName="designation"
+                    name="designation" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="file">File</label>
+        <input formControlName="file" id="file" type="file" class="form-control" (change)="onFileChange($event)">
+        <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+            <!-- <div *ngIf="f.file.errors.required">File is required.</div> -->
+        </div>
+    </div>
+
+    <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+
+    <br/>
+    <br/>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

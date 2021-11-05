@@ -1,0 +1,40 @@
+<h1>Manage Employee</h1>
+<nav class="navbar">
+<input class= "form-control" type="text" name="fullName" [(ngModel)] ="fullName"  (ngModelChange) ="search()"  placeholder="Enter Name">    
+</nav>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <!-- <th (click) ="sort('id')"> Id <i class="fa fa-sort"></i></th> -->
+            <th (click) ="sort('fullName')"> Full Name <i class="fa fa-sort"></i></th>
+            <th> DOB</th>
+            <th> Gender </th>
+            <th> Salary</th>
+            <th> Designation</th>
+            <th>Imported By</th>
+            <th (click) ="sort('importdDate')">Imported Date <i class="fa fa-sort"></i></th>
+            <!-- <th>Image</th> -->
+            <th> Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let employee of employees | orderBy : key : reverse | paginate : {itemsPerPage : 5 , currentPage: p}; ">
+           <!-- <td>{{employee.id}}</td> -->
+            <td>{{employee.fullName}}</td>
+            <td>{{employee.dob }}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.salary}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.importedBy}}</td>
+            <td>{{employee.importedDate  | date }}</td>
+            <!-- <td><img [src]= {{employee.FileSource}}/></td>  -->
+
+            <td class="badge badge-warning" routerLink="/employees/{{ employee.id }}">
+                Edit
+            </td>
+        </tr>
+
+        <!-- <pagination-controls (pageChange)= "p = $event"></pagination-controls> -->
+    </tbody>
+</table>
