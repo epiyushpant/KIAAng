@@ -13,7 +13,7 @@
             <th> Designation</th>
             <th>Imported By</th>
             <th (click) ="sort('importdDate')">Imported Date <i class="fa fa-sort"></i></th>
-            <!-- <th>Image</th> -->
+
             <th> Action</th>
         </tr>
     </thead>
@@ -28,7 +28,7 @@
             <td>{{employee.designation}}</td>
             <td>{{employee.importedBy}}</td>
             <td>{{employee.importedDate  | date }}</td>
-            <!-- <td><img [src]= {{employee.FileSource}}/></td>  -->
+    
 
             <td class="badge badge-warning" routerLink="/employees/{{ employee.id }}">
                 Edit

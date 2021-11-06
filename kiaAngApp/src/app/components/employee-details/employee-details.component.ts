@@ -34,9 +34,8 @@ export class EmployeeDetailsComponent implements OnInit {
   fileSource: new FormControl('', [Validators.required])
   });
 
- // currentEmployee: Employee | any;
   message = '';
-
+  baseUrl : string = "https://localhost:44397/api/employee/"+this.route.snapshot.params.id ; 
   constructor(private employeeService: EmployeeDataService,
     private route: ActivatedRoute,
     private router: Router,
@@ -74,9 +73,10 @@ export class EmployeeDetailsComponent implements OnInit {
   }
    
   updateEmployee(){
+  
     console.log(this.myForm.value);
-    this.http.put('https://localhost:44397/api/employee', this.myForm.value)
-      .subscribe(res => {
+  //this.http.put(this.baseUrl, this.myForm.value)
+     this.employeeService.update( this.route.snapshot.params.id , this.myForm.value).subscribe(res => {
         console.log(res);
         alert('Uploaded Successfully.');
       })
@@ -100,46 +100,7 @@ export class EmployeeDetailsComponent implements OnInit {
         });
   }
 
-  // updateemployee(status: boolean): void {
-  //   const data = {
-  //     fullName: this.currentEmployee.fullName,
-  //     dob: this.currentEmployee.dob,
-  //     gender: this.currentEmployee.gender,
-  //     salary: this.currentEmployee.salary,
-  //     designation: this.currentEmployee.designation
-
-  //   };
-
-  //   this.message = '';
-
-  //   this.employeeService.update(this.currentEmployee.id, data)
-  //     .subscribe(
-  //       response => {
-  //         //this.currentEmployee.published = status;
-  //         console.log(response);
-  //         this.message = response.message ? response.message : 'The status was updated successfully!';
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
-
-  // updateEmployee(): void {
-  //   this.message = '';
-
-  //   this.employeeService.update(this.currentEmployee.id, this.currentEmployee)
-  //     .subscribe(
-  //       response => {
-  //         console.log(response);
-  //         //this.message = response.message ? response.message : 'This employee was updated successfully!';
-  //         this.message = 'This employee was updated successfully!';
-
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
-
+ 
   deleteEmployee(): void {
     this.employeeService.delete(this.currentEmployee.id)
       .subscribe(

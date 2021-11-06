@@ -1,6 +1,7 @@
 import { HttpClient, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmployeeDataService } from 'src/app/services/employee/employee-data.service';
 
 @Component({
   selector: 'app-add-employees',
@@ -21,7 +22,7 @@ export class AddEmployeesComponent implements OnInit {
   });
 
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private employeeService: EmployeeDataService ) { }
 
   ngOnInit(): void {
   }
@@ -31,8 +32,7 @@ export class AddEmployeesComponent implements OnInit {
   }
    
   onFileChange(event:any) {
-    const reader = new FileReader();
-    
+    const reader = new FileReader(); 
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
@@ -52,11 +52,12 @@ export class AddEmployeesComponent implements OnInit {
    
   submit(){
     console.log(this.myForm.value);
-    this.http.post('https://localhost:44397/api/employee', this.myForm.value)
-      .subscribe(res => {
-        console.log(res);
-        alert('Uploaded Successfully.');
-      })
+    this.employeeService.create(this.myForm.value).subscribe(res => {
+      console.log(res);
+      alert('Uploaded Successfully.');
+    })
+
+  
   }
 
 }
