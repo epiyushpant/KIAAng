@@ -24,7 +24,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { MatIconModule} from '@angular/material/icon';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component'; 
-import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { EmployeeDataService } from './services/employee/employee-data.service';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
@@ -41,7 +40,6 @@ export function tokenGetter() {
     LoginComponent,
     HomeComponent,
     FileUploadComponent,
-    AddEmployeeComponent,
     EmployeeDetailsComponent,
     EmployeeListComponent,
     AddEmployeesComponent
