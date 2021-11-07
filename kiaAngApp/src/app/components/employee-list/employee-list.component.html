@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<div class="container">
 <h1>Manage Employee</h1>
 <div class="row">
     <div class="col-md-4">
@@ -22,13 +23,13 @@
         <Label> From Date</Label>
     </div>
     <div class="col-md-4">
-        <input class="form-control" type="date" name="fromdate" [(ngModel)]="fromDate" (ngModelChange)="searchDOB()">
+        <input class="form-control" type="date" name="fromdate" [(ngModel)]="fromDate" (blur)="searchDOB()">
     </div>
     <div class="col-md-2">
         <Label>To Date</Label>
     </div>
     <div class="col-md-4">
-        <input class="form-control" type="date" name="toDate" [(ngModel)]="toDate" (ngModelChange)="searchDOB()">
+        <input class="form-control" type="date" name="toDate" [(ngModel)]="toDate" (blur)="searchDOB()">
     </div>
 </div>
 
@@ -39,15 +40,15 @@
         From Salary
     </div>
     <div class="col-md-4">
-        <input class="form-control" type="number" name="fromSalary" [(ngModel)]="fromSalary"
-            (ngModelChange)="searchSalary()" placeholder="Enter From Salary">
+        <input class="form-control" type="number" name="fromSalary"  [(ngModel)]="fromSalary" (blur) ="searchSalary()"
+            placeholder="Enter From Salary">
     </div>
     <div class="col-md-2">
         To Salary
     </div>
     <div class="col-md-4">
-        <input class="form-control" type="number" name="toSalary" [(ngModel)]="toSalary"
-            (ngModelChange)="searchSalary()" placeholder="Enter To Salary">
+        <input class="form-control" type="number" name="toSalary"  [(ngModel)]="toSalary" (blur)="searchSalary()"
+           placeholder="Enter To Salary">
     </div>
 </div>
 <br>
@@ -90,3 +91,4 @@
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </tbody>
 </table>
+</div>

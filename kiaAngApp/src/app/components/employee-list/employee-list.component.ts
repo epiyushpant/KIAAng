@@ -12,9 +12,9 @@ export class EmployeeListComponent implements OnInit {
   employees : any ; 
   fullName : string ="" ;
   designation : string ="";
-  fromDate : string ="";
+  fromDate : string ="" ;
   toDate : string ="";
-  fromSalary : number =0;
+  fromSalary : number =0 ;
   toSalary : number =0;
   gender : string= "";
   p: number =1 ;
@@ -46,25 +46,29 @@ export class EmployeeListComponent implements OnInit {
   searchDOB(){
   
     if(this.fromDate == "" && this.toDate ==""){
+      alert(1);
       this.ngOnInit();
     }
     else  if(this.fromDate != "" && this.toDate !="" ){
+      this.ngOnInit();
       this.employees =  this.employees.filter((emp: { dob : string; }) => 
       {
-        return emp.dob >= this.fromDate && emp.dob <= this.toDate ;
+        return new Date(emp.dob) >= new Date(this.fromDate) && new Date(emp.dob) <= new Date(this.toDate) ;
       })
     }
     else if(this.fromDate != "" && this.toDate =="" )
     {
+      this.ngOnInit();
       this.employees =  this.employees.filter((emp: { dob : string; }) => 
       {
-        return emp.dob >= this.fromDate ;
+        return new Date(emp.dob) >= new Date(this.fromDate) ;
       })
     }
     else {
+      this.ngOnInit();
       this.employees =  this.employees.filter((emp: { dob : string; }) => 
       {
-        return emp.dob <= this.toDate ;
+        return  new Date(emp.dob) <= new Date(this.toDate) ;
       })
     }
    }
@@ -72,23 +76,28 @@ export class EmployeeListComponent implements OnInit {
 
    searchSalary(){
   
-    if(this.fromSalary == 0 && this.toSalary ==0){
+    alert(this.fromSalary);
+    alert(this.toSalary);
+    if((this.fromSalary == 0 || this.fromSalary == null) && (this.toSalary ==0 || this.toSalary ==null)){
       this.ngOnInit();
     }
-    else  if(this.fromSalary != 0 && this.fromSalary !=0 ){
+    else  if((this.fromSalary != 0 || this.fromSalary != null)  && (this.toSalary !=0 || this.toSalary !=null) ){
+      this.ngOnInit();
       this.employees =  this.employees.filter((emp: { salary : number; }) => 
       {
-        return emp.salary >= this.fromSalary && emp.salary <= this.toSalary ;
+        return emp.salary >= this.fromSalary && emp.salary <= this.toSalary;
       })
     }
-    else if(this.fromDate != "" && this.toDate =="" )
+    else if((this.fromSalary != 0 || this.fromSalary != null) && (this.toSalary ==0 || this.toSalary ==null) )
     {
+      this.ngOnInit();
       this.employees =  this.employees.filter((emp: { salary : number; }) => 
       {
         return emp.salary >= this.fromSalary ;
       })
     }
     else {
+      this.ngOnInit();
       this.employees =  this.employees.filter((emp: { salary : number; }) => 
       {
         return emp.salary <= this.toSalary ;
