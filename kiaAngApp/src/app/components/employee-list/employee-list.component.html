@@ -1,40 +1,92 @@
+<app-navbar></app-navbar>
 <h1>Manage Employee</h1>
-<nav class="navbar">
-<input class= "form-control" type="text" name="fullName" [(ngModel)] ="fullName"  (ngModelChange) ="search()"  placeholder="Enter Name">    
-</nav>
+<div class="row">
+    <div class="col-md-4">
+        <input class="form-control" type="text" name="fullName" [(ngModel)]="fullName" (ngModelChange)="search()"
+            placeholder="Enter Name">
+    </div>
+    <div class="col-md-4">
+        <input class="form-control" type="text" name="designation" [(ngModel)]="designation"
+            (ngModelChange)="searchDesignation()" placeholder="Enter Designation">
+    </div>
+    <div class="col-md-4">
+        <input class="form-control" type="text" name="gender" [(ngModel)]="gender" (ngModelChange)="searchGender()"
+            placeholder="Enter Gender">
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-md-2">
+        <Label> From Date</Label>
+    </div>
+    <div class="col-md-4">
+        <input class="form-control" type="date" name="fromdate" [(ngModel)]="fromDate" (ngModelChange)="searchDOB()">
+    </div>
+    <div class="col-md-2">
+        <Label>To Date</Label>
+    </div>
+    <div class="col-md-4">
+        <input class="form-control" type="date" name="toDate" [(ngModel)]="toDate" (ngModelChange)="searchDOB()">
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-md-2">
+        From Salary
+    </div>
+    <div class="col-md-4">
+        <input class="form-control" type="number" name="fromSalary" [(ngModel)]="fromSalary"
+            (ngModelChange)="searchSalary()" placeholder="Enter From Salary">
+    </div>
+    <div class="col-md-2">
+        To Salary
+    </div>
+    <div class="col-md-4">
+        <input class="form-control" type="number" name="toSalary" [(ngModel)]="toSalary"
+            (ngModelChange)="searchSalary()" placeholder="Enter To Salary">
+    </div>
+</div>
+<br>
+
+
 <table class="table table-bordered">
     <thead>
         <tr>
             <!-- <th (click) ="sort('id')"> Id <i class="fa fa-sort"></i></th> -->
-            <th (click) ="sort('fullName')"> Full Name <i class="fa fa-sort"></i></th>
+            <th (click)="sort('fullName')"> Full Name <i class="fa fa-sort"></i></th>
             <th> DOB</th>
             <th> Gender </th>
             <th> Salary</th>
             <th> Designation</th>
             <th>Imported By</th>
-            <th (click) ="sort('importdDate')">Imported Date <i class="fa fa-sort"></i></th>
+            <th (click)="sort('importedDate')">Imported Date <i class="fa fa-sort"></i></th>
 
             <th> Action</th>
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let employee of employees | orderBy : key : reverse | paginate : {itemsPerPage : 5 , currentPage: p}; ">
-           <!-- <td>{{employee.id}}</td> -->
+        <tr
+            *ngFor="let employee of employees | orderBy : key : reverse | paginate : {itemsPerPage : 5 , currentPage: p}; ">
+            <!-- <td>{{employee.id}}</td> -->
             <td>{{employee.fullName}}</td>
             <td>{{employee.dob }}</td>
             <td>{{employee.gender}}</td>
             <td>{{employee.salary}}</td>
             <td>{{employee.designation}}</td>
             <td>{{employee.importedBy}}</td>
-            <td>{{employee.importedDate  | date }}</td>
-    
+            <td>{{employee.importedDate | date }}</td>
+
 
             <td class="badge badge-warning" routerLink="/employees/{{ employee.id }}">
                 Edit
             </td>
         </tr>
 
-        <!-- <pagination-controls (pageChange)= "p = $event"></pagination-controls> -->
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </tbody>
 </table>

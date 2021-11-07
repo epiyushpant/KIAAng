@@ -27,6 +27,7 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { EmployeeDataService } from './services/employee/employee-data.service';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
@@ -42,7 +43,8 @@ export function tokenGetter() {
     FileUploadComponent,
     EmployeeDetailsComponent,
     EmployeeListComponent,
-    AddEmployeesComponent
+    AddEmployeesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

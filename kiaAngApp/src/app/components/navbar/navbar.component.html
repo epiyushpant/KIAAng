@@ -1,0 +1,30 @@
+<form >
+    <nav  class="navbar navbar-expand navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">KIA</a>
+        <div class="navbar-nav mr-auto">
+      
+          <li class="nav-item">
+            <a routerLink="/employees" class="nav-link">Employees</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/add" class="nav-link">Add</a>
+          </li>
+    
+          <li class="nav-item">
+            <a routerLink="/file" class="nav-link">File</a>
+          </li>
+
+          <li class="nav-item">
+            <a   class="nav-link" (click) = "logOut()">Log Out</a>
+          </li>
+
+        </div>
+      </nav>
+    
+      <div class="container mt-3">
+        <router-outlet></router-outlet>
+      </div>
+
+
+
+</form>
